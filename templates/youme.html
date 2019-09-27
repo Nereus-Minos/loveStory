@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小小合照</title>
+
+	<link rel="stylesheet" type="text/css" href="/static/Css/test.css">
+	<script type="text/javascript" src="/static/Js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/static/Js/jquery.mousewheel1.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			var $screen = $('.pages_con');
+			var $pages = $('.pages');
+			var $len = $pages.length;
+			var $h = $(window).height();
+			var $points = $('.points li');
+			var timer = null;
+
+			var $nowscreen = 0;
+			$pages.css({'height':$h});
+			$pages.eq(0).addClass('moving');
+
+
+			$points.click(function(){
+				$nowscreen = $(this).index();
+				$points.eq($nowscreen).addClass('active').siblings().removeClass('active');
+				$screen.animate({'top':-$h*$nowscreen},300);
+				$pages.eq($nowscreen).addClass('moving').siblings().removeClass('moving');
+			})
+
+
+
+			$(window).mousewheel(function(event,dat){
+				clearTimeout(timer);
+				timer = setTimeout(function(){
+
+					if(dat==-1)
+					{
+						$nowscreen++;
+					}
+					else
+					{
+						$nowscreen--;
+					}
+					if($nowscreen<0)
+					{
+						$nowscreen=0;
+					}
+
+					if($nowscreen>$len-1)
+					{
+						$nowscreen=$len-1;
+					}
+
+					$screen.animate({'top':-$h*$nowscreen},300);
+					$pages.eq($nowscreen).addClass('moving').siblings().removeClass('moving');
+
+					$points.eq($nowscreen).addClass('active').siblings().removeClass('active');
+
+					},300)		
+
+			})
+		})
+
+	</script>
+	
+</head>
+<body>
+	<div class="pages_con">
+		<div class="pages page11">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/aa.jpg"></div>
+				<div class="right_info">
+				2018年12月14日，我和你终于变成我们啦，感谢你这么久的坚持和一直以来的付出，未来会有很多磨难和争吵，我们一定要抓紧彼此的手，我们会从校园，走进社会，我们会有我们的小家，你会容忍我的小毛病，替我遮风大雨，我会了解你的喜好，打理好你的衣食住行。亲爱的，我爱你！
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="pages page1">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/a.jpg"></div>
+				<div class="right_info">
+				嘻嘻嘻，看我们穿的是什么，对啦，情侣装，哈哈，这是我们的第一件情侣装哦，衣服不够漂亮，只能靠颜值来补啦。这一路走来，磕磕绊绊，吵吵闹闹，还好我们都没有放开彼此的手，值得奖励，要继续保持哦！
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="pages page2">
+			<div class="main_con">
+				<div class="right_img pp2"><img src="/static/images/image/b.jpg"></div>
+				<div class="left_info">
+				快看我在吃什么，蛋糕哦，有个爱我的大傻纸，非要一年给我过两次生日，好吧，我就默默接受吧，嘻嘻。但是旁边的小帅哥，你小眼睛咪咪着，是在干嘛呢，比谁眼睛小呐，好吧，你赢了，霍霍。都说两个人在一起久了，就变得相像了，我怎么觉得我的颜值还是甩了你好几条街呢，天生丽质没办法呀，要不你去趟韩国，姐姐资助你。
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="pages page3">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/c.jpg"></div>
+				<div class="right_info">
+				我不就是梳了一个俏皮的小辫子嘛，至于的嘛，非要摆拍一下，还要起个名字叫什么猪猪辫，哼，打算即日起把你打入冷宫了，略略略。偷偷侧过头看了看我身边这个大傻纸，认真学习的你还是很有魅力的。
+
+					
+				</div>
+			</div>			
+		</div>
+
+		<div class="pages page4">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/d.jpg"></div>
+				<div class="right_info">
+					天气终于变暖和一点啦，那就拍个照吧，景美人更美呀，哎呀，身后的小花花没有出境呀，嘻嘻，不重要不重要，身边的你最重要。你说你，不仅肤白，而且还有小酒窝，羡慕嫉妒呀，但是你丑呀，哈哈，骗你的，我眼中你帅气得很。
+				</div>
+			</div>			
+		</div>
+		<div class="pages page5">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/e.jpg"></div>
+				<div class="right_info">
+				心心念念的师大夜市，我们终于来了！而且还吃到了最爱吃的烤生蚝，只可惜我在专注拍照，忘记了身边喂我的小哥哥，目不转睛盯着生蚝心想：就知道臭美，还不快吃，我口水都要流出来啦。谢谢亲爱的带我来吃好吃的，你说你怎么对我这么好呀。
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="pages page6">
+			<div class="main_con">
+				<div class="right_img pp6"><img src="/static/images/image/f.jpg"></div>
+				<div class="left_info">
+				学校的挑花开啦，凡是有花的地方，都有阿姨们拍照的身影，赶在花败之前，来张美照吧。希望我们可以一直心中有爱，眼中有景，身边有你。亲爱的，我超爱你的。
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="pages page7">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/g.jpg"></div>
+				<div class="right_info">
+				小火锅开吃喽，我的大傻纸又带我出来吃好吃的啦，总这么宠着我，你说被宠坏怎么办，你总说我调的火锅蘸料最好吃，每次都要我帮你调，你说万一有一天，你和别人去吃没人给你调了该怎么办那你就喝火锅汤吧，哈哈。
+
+					
+				</div>
+			</div>			
+		</div>
+
+		<div class="pages page8">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/h.jpg"></div>
+				<div class="right_info">
+					俩傻纸，笑的像二百斤的胖子，你说我的樱桃小口，和你的西瓜大口比起来，小巫见大巫呀，哈哈哈，亲爱的，真的希望你以后的每一天，都能开心快乐，亲爱的，看到你开心，我就会更开心的，有时候你幼稚的像个智障一样，有时候又像个大家长一样，只要你是开心的就好。亲爱的，我喜欢你的每个样子。
+				</div>
+			</div>			
+		</div>
+		<div class="pages page9">
+			<div class="main_con">
+				<div class="left_img"><img src="/static/images/image/i.jpg"></div>
+				<div class="right_info">
+					亲爱的，怎么这么宠我呀，每次去超市，都要让我坐在购物车里推着我走，看到大家异样的眼光，我总是从紧张、害羞变成最后的傲娇、开心、幸福，我是不是招人恨呀，每次去超市，我们都要逛逛油盐酱醋、锅碗瓢盆、生鲜水果...，畅想着我们未来的小家会是什么模样，有一点是肯定的，家中有你，还有我。
+				</div>
+			</div>			
+		</div>	
+
+
+
+<!-- 照片墙 -->
+		<div class="pages page10">
+			<!-- <div class="main_con"> -->
+					<div class="grid">
+
+					</div>
+			
+			<!-- 		</div> -->
+		</div>
+ <!-- 照片墙 -->
+
+ <!-- 小圆点 -->
+		<ul class="points">
+			<li class="active"></li>
+			<li></li>
+			<li></li>		
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+ <!-- 小圆点 -->
+ 
+	</div>
+  <link rel="stylesheet" type="text/css" href="/static/Css/bootstrap.min.css">
+  <script src='/static/js/jquery.js'></script>
+  <script type="text/javascript" src="/static/Js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="/static/Css/style.css" media="screen" type="text/css" />
+
+  <script src='/static/Js/jquery.easing.min.js'></script>
+
+  <script src="/static/Js/index.js"></script>
+
+</body>
+</html>

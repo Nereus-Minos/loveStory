@@ -1,0 +1,62 @@
+.navbar-nav{
+	font-size: 26px;
+
+}
+.navbar-inverse{
+	background-color:#eaf048;
+	border-color: #eaf048;
+}
+.navbar-inverse .navbar-nav > li > a{
+	color:#8600ff
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+	color:blue;
+	background-color:transparent;	
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
+	color:blue;
+	background-color:#eaf048;
+}
+.navbar-inverse .navbar-toggle{
+	border-color: gray;
+}
+.navbar-brand > img{
+	width:100px;
+	height:39px;
+}
+.navbar-brand {
+    padding: 7px 15px 0 15px;
+ }
+
+ @media (max-width:1200px){
+	.navbar-nav{
+		font-size:22px;
+	}
+}
+/* @media (max-width:1050px){
+	.navbar-nav{
+		font-size:20px;
+	}
+}*/
+ @media (max-width:1000px){
+	.navbar-nav{
+		font-size:18px;
+
+	}
+}
+@media (max-width:1000px){
+		.navbar-nav > li > a{
+			line-height: 30px;
+		}
+	}
+}
+
+
+.btn{
+	padding: 9px 9px;
+}
+@media (max-width:990px){
+	.nav > li > a{
+		padding:10px 8px;
+	}
+}

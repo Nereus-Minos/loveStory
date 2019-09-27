@@ -1,0 +1,54 @@
+
+@media(max-width: 1572px){
+
+	.scroll_con{
+	    margin: 30px auto 0px auto;
+	}
+	.bigvedio{
+    	margin: 600px auto -150px auto;   
+		display:flex;
+		justify-content:center;    
+	}
+	.shipin{
+        margin:-180px auto 0 auto;  
+    }
+    #myVedio{ 
+        margin:-680px auto 0 auto;                             */
+    }
+}
+
+@media(max-width: 800px){
+	#accordion{
+		display:flex;
+		justify-content:center;   		
+		transform: scale(0.8,0.8);
+		margin:-65px auto;
+	}
+}
+
+@media(max-width: 500px){
+	#accordion{
+		display:flex;
+		justify-content:center;   		
+		transform: scale(0.5,0.5);
+		margin:-150px 100px -150px -63px;
+	}
+}
+
+
+@media(max-width: 380px){
+	#accordion{
+		display:flex;
+		justify-content:center;   		
+		transform: scale(0.5,0.5);
+		margin:-150px 100px -150px -80px;
+	}
+}
+@media(max-width: 340px){
+	#accordion{
+		display:flex;
+		justify-content:center;   		
+		transform: scale(0.5,0.5);
+		margin:-150px 100px -150px -100px;
+	}
+}

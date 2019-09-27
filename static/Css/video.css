@@ -1,0 +1,28 @@
+        .shipin p{
+            list-style: none;
+            background-color: lightblue;
+            color: white;
+            text-align: center;
+            margin: 1px auto;
+            width: 284px;
+
+            font-family: "楷体";
+            font-size:13px;
+            border-radius: 5px;
+        }
+        .shipin .active{
+            background-color: darkgray;
+        }
+        .shipin{
+            margin:-180px 0 0 224px;  
+            position: absolute;               
+        }
+        #myVedio{
+            width: 284px;
+            height:500px;
+            border: 3px solid #f6d6ff;    
+            margin:-680px auto 0 224px;   
+            border-radius: 10px; 
+            position: absolute;                           
+        }
+        

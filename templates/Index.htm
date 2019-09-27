@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>我和他的小爱情</title>
+    <link href="/static/Css/screen.css" rel="stylesheet" type="text/css" >
+    <link href="/static/Css/main.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="/static/Css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/Css/daohangtiao.css">
+	<link rel="stylesheet" type="text/css" href="/static/Css/huadongtiao.css">
+    <script type="text/javascript" src="/static/Js/jquery-1.12.4.min.js"></script>
+ 	<script type="text/javascript" src="/static/Js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/Js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/Css/video.css">
+	<link rel="stylesheet" type="text/css" href="/static/Css/shoufengqin.css">
+	<link rel="stylesheet" type="text/css" href="/static/Css/wufenggundong.css">
+	<link rel="stylesheet" type="text/css" href="/static/Css/flex.css">
+
+<!-- 视频 -->
+	 <script type="text/javascript">
+        $(function(){
+            var myVideo = document.getElementById("myVedio"); //通过js获取到vedio标签实例
+            var vedioLi = document.getElementsByTagName("p"); //获取视频列表
+             
+            var vedioArry = new Array("1.mp4", "2.mp4", "3.mp4", "4.mp4"); //设置播放视频列表数组
+            var arryNumber = 0; //设置默认播放位置，方便后面循环播放
+            for(var j = 0; j < vedioLi.length; j++) {//循环条件为列表的长度
+                vedioLi[j].onclick = function() {
+                        for(var m = 0; m < vedioLi.length; m++) {
+                                vedioLi[m].style.backgroundColor = "lightblue";//为每个类表设置背景为浅蓝色
+                        }
+                            for(var i = 0; i < vedioLi.length; i++) {
+                            if(vedioLi[i] == this) { //判断点中的是否为该项
+                                    vedioLi[i].style.backgroundColor = "darkgray"; //将点击后的背景设置为灰白
+                                    arryNumber = i; //将当前播放设置为选中的下标
+                                    myVideo.src = "images/vedio/" + vedioArry[i]; //设置播放视频
+                                    myVideo.play(); //开始播放
+                                }
+                        }
+                    }
+            }
+            myVideo.addEventListener("ended", function() {//为vedio添加ended监听，当视频播放完毕后执行对应函数
+                if(arryNumber == (vedioArry.length - 1)) { //判断是否到了最后一个视频
+                        vedioLi[vedioLi.length - 1].style.backgroundColor = "lightblue"; //将前一个列表颜色设为lightblue
+                    vedioLi[0].style.backgroundColor = "darkgray"; //将当前视频设置为灰白
+                    myVideo.src = "images/vedio/"+vedioArry[0]; //播放第一个视频
+                    myVideo.play();
+                    arryNumber = 0;//将下标重设为 0
+                } else {
+                    arryNumber += 1; //每播放一次则将下标加一
+                    myVideo.src = "images/vedio/" + vedioArry[arryNumber];
+                    vedioLi[arryNumber].style.backgroundColor = "darkgray";
+                    vedioLi[arryNumber - 1].style.backgroundColor = "lightblue";
+                    myVideo.play();
+                }
+             
+            });
+
+        });</script>
+<!-- 视频 -->
+
+<!-- 搜索联想词 -->
+	<!-- 	<script type="text/javascript">
+
+		$(function(){
+
+			$('#input01').keyup(function(){
+
+				var $val = $(this).val();
+
+				$.ajax({
+					url:'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=wise_web&sugsid=1446,28981,21099,28518,28768,28720,28963,28836,28584,26350',
+					type:'get',
+					dataType:'jsonp',
+					data:{'wd':$val}
+				})
+				.done(function(data){
+					// alert('aaa');
+					console.log(data);
+					
+					// 清空元素里面的内容
+					$('#list01').empty();
+
+					var dat = data.g;
+
+					for(var i=0;i<dat.length;i++)
+					{
+						var $newli = $('<li>');
+
+						$newli.html(dat[i].q);
+
+						$newli.appendTo($('#list01'));
+					}
+
+				})
+				.fail(function(data){
+					alert('服务器超时！');
+				})
+			})
+
+
+
+		})
+	</script> -->
+<!-- 搜索联想词 -->
+
+<!-- 中间文本滑动条 -->
+	<script type="text/javascript">
+		$(function(){
+
+			var h = $('.paragraph').outerHeight();
+
+			//整体文本的高度减去外面容器的高度h=884,,hide=384
+			var hide = h-580;
+
+			$('.scroll_bar').draggable({
+				axis:'y',
+				containment:'parent',
+				opacity:0.6,
+				drag:function(ev,ui){
+					// 相对容器的高度
+					var nowtop = ui.position.top;
+					// 范围0-384  
+					var nowscroll = parseInt(nowtop/290*hide);
+					$('.paragraph').css({top:-nowscroll});
+				}
+
+			});
+
+
+		})
+
+	</script>
+<!-- 中间文本滑动条 -->
+
+
+<!-- 底部向上箭头 -->
+	<script type="text/javascript">
+		$(function(){
+			$totop = $('.totop');
+			$(window).scroll(function(){
+				var iNum = $(document).scrollTop();
+				if(iNum>200){
+					$totop.fadeIn();
+				}
+				else
+				{
+					$totop.fadeOut();
+				}
+			})
+			$totop.click(function(){
+				$('html,body').animate({'scrollTop':0});
+			})
+		})
+	</script>
+<!-- 底部向上箭头 -->
+
+
+
+
+
+
+<!-- 手风琴滑动效果 -->
+		<script type="text/javascript">
+			$(function(){
+				$('#accordion li').click(function() {		
+					$(this).animate({left:$(this).index()*21});		
+					$(this).prevAll().each(function(){				
+						$(this).animate({left:$(this).index()*21});
+					});
+					$(this).nextAll().each(function(){
+						$(this).animate({left:(514.25-(10-$(this).index())*21)});				
+					});
+				});
+			})
+		</script>
+<!-- 手风琴滑动效果 -->
+
+
+<!--无缝滚动 -->
+		<script type="text/javascript">
+			window.onload = function(){
+				var oDiv = document.getElementById('slide');
+				var oBtn01 = document.getElementById('btn01');
+				var oBtn02 = document.getElementById('btn02');
+				//通过标签获取元素，获取的是选择集，加上下标才能获取到元素		
+				var oUl = oDiv.getElementsByTagName('ul')[0];
+				var iLeft = 0;
+				var iSpeed = -2;
+				var iNowspeed = 0;
+				//将ul里面的内容复制一份，整个ul里面就包含了10个li
+				oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;	
+				function moving(){
+					iLeft += iSpeed;
+					// 当ul向左滚动到第5个li时，瞬间将整个ul拉回到初始位置
+					if(iLeft<-1651.5)
+					{
+						iLeft=0;
+					}
+					//当ul在起始位置往右滚动时候，瞬间将整个ul拉回到往左的第5个li的位置
+					if(iLeft>0)
+					{
+						iLeft = -1651.5;
+					}
+					oUl.style.left = iLeft + 'px';
+				}
+				var timer = setInterval(moving,30);
+				oBtn01.onclick = function(){
+					iSpeed = -2;
+				}
+
+				oBtn02.onclick = function(){
+					iSpeed = 2;
+				}
+				// 当鼠标移入的时候
+				oDiv.onmouseover = function(){
+					iNowspeed = iSpeed;
+					iSpeed = 0;
+				}
+			    // 当鼠标移出的时候
+				oDiv.onmouseout = function(){
+					iSpeed = iNowspeed;
+				}
+			}
+		</script>
+<!-- 无缝滚动 -->
+
+
+
+</head>
+
+
+
+
+<body style='overflow:-Scroll;overflow-x:hidden'>
+<!-- 导航条 -->
+	<div class="navbar navbar-inverse navbar-static-top">		
+		<div class="container">			
+			<!-- 定义logo和切换小图标   -->
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target="#mymenu">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="javascript:;" class="navbar-brand">
+					<img src="/static/images/爱的图标2.jpg" >
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="mymenu">
+				<!-- 定义菜单   -->
+				<ul class="nav navbar-nav">
+					<li class="active "><a href="javascript:;">首页</a></li>
+					<li><a href="/timeMan/">时间先生</a></li>
+					<li><a href="/story/">爱情故事</a></li>
+					<li><a href="/letter/">三行情书</a></li>
+					<li><a href="/youme/">小小合照</a></li>
+					<li><a href="/loveWords/0/">每日情话</a></li>
+					<li><a href="/Comments/">送上祝福</a></li>
+				</ul>
+	        </div>
+		</div>
+	</div>
+<!-- 导航条 -->
+
+<div class='container-fluid'>
+
+<!-- 左边文字动画 -->
+        <div style="position:fixed ; left: 10px; top: 100px;z-index:1000">
+        	<div class='biaobai'>
+        		<div>一</div>
+        		<div>切</div>
+        		<div>不</div>
+        		<div>敢</div>
+        		<div>晒</div>
+        		<div>的</div>
+        		<div>表</div>
+        		<div>白</div>
+        		<div>都</div>
+        		<div>不</div>
+        		<div>白</div>
+        	</div>          
+        </div>
+<!-- 左边文字动画 --> 
+
+
+
+<!-- 底部向上箭头 -->
+
+	<div class='totop'>↑</div>
+<!-- 底部向上箭头 -->
+
+
+<!-- 占位占位占位 -->
+
+			<div style="clear: left; text-align: center; width: 800px; height: 50px;">
+			</div>
+
+<!-- 占位占位占位 -->
+<div class='bigbox'>
+<!-- 手风琴 -->
+		<div id="accordion" >
+			<ul>
+			<li class="bar01"><span>我和他01</span><img src="/static/images/12/11.jpg" height="540" width="304.25"/></li>
+		    <li class="bar02"><span>我和他02</span><img src="/static/images/12/12.jpg" height="540" width="304.25"/></li>
+		    <li class="bar03"><span>我和他03</span><img src="/static/images/12/13.jpg" height="540" width="304.25"/></li>
+		    <li class="bar04"><span>我和他04</span><img src="/static/images/12/4.jpg" height="540" width="304.25"/></li>
+		    <li class="bar05"><span>我和他05</span><img src="/static/images/12/5.jpg" height="540" width="304.25"/></li>
+			<li class="bar06"><span>我和他06</span><img src="/static/images/12/6.jpg" height="540" width="304.25"/></li>
+		    <li class="bar07"><span>我和他07</span><img src="/static/images/12/7.jpg" height="540" width="304.25"/></li>
+		    <li class="bar08"><span>我和他08</span><img src="/static/images/12/8.jpg" height="540" width="304.25"/></li>
+		    <li class="bar09"><span>我和他09</span><img src="/static/images/12/9.jpg" height="540" width="304.25"/></li>
+		    <li class="bar10"><span>我和他10</span><img src="/static/images/12/10.jpg" height="540" width="304.25"/></li>
+			</ul>
+		</div>
+<!-- 手风琴 -->   
+
+
+<!-- 中间文本滑动条 -->
+ <!-- 容器高度 -->
+	<div class="scroll_con" >
+		<!-- 文本实际高度 -->
+		<div class="paragraph">
+
+
+            <h1 >
+				愿得一心人，白首不分离</h1>
+            <h4>
+                陪伴，是最长情的告白</h4>
+            <h4>
+                你问过
+            </h4>
+            <h4>
+                我爱你，能坚持多长时间</h4>
+            <h4>
+                我说过</h4>
+			<h4>
+				我爱你，是永远</h4>
+			<h4>
+                你问过
+            </h4>
+            <h4>
+                永远是多久呢</h4>
+            <h4>
+                我说过</h4>
+			<h4>
+				永远就是比时间多那么一秒</h4>
+
+            <h4>
+                喜欢一座城，因为一个人</h4>
+            <h4>
+                恋上一座城，因为一颗心</h4>
+            <h4>
+                留在一座城，因为一份爱</h4>
+
+
+            <h4>
+                爱，
+            </h4>
+            <h4>
+                就是我们的家
+            </h4>
+
+            <h4>
+                幸福，
+            </h4>
+            <h4>
+                就是在偌大的城市
+            </h4>
+            <h4>
+                用两双眼睛
+            </h4>
+            <h4>
+                看一个未来
+            </h4>
+            <h4>
+                在这里</h4>
+            <h4>
+                真的很感谢各位小伙伴</h4>
+            <h4>
+                感谢你们对我和小月月的支持</h4>
+            <h4>
+                还帮忙撮合我俩</h4>
+            <h4>
+                更谢谢你们曾经</h4>
+            <h4>
+                陪着小月月，还有我一路走来</h4>
+            <h4>
+                欢歌笑语 风雨兼程</h4>
+            <h4>
+                未来的日子</h4>
+            <h4>
+                依旧有你们相伴
+            </h4>
+            <h4>
+                以后的岁月
+            </h4>
+            <h4>
+                小月月</h4>
+            <h4>
+                由我护航 定不辜负</h4>
+            <h4>
+                感恩 一路同行</h4>
+
+			<h1>我永远都是爱你的大傻子</h1>
+		</div>
+		<!-- 滑动条的容器 -->
+		<div class="scroll_bar_con">
+			<!-- 实际滑动条-->
+			<div class="scroll_bar">
+			</div>	
+		</div>	
+	</div>	
+     <!-- 中间文本滑动条 -->		
+			<br />
+			<br />
+            <br />
+			<br />
+			<br />
+            <br />
+<!-- 中间文本滑动条 -->
+
+		
+<!-- 视频 -->
+<div class='bigvedio'>
+    <video id="myVedio" autoplay="autoplay" controls="controls" >
+        <source src="/static/images/vedio/1.mp4" ></source>
+    </video>
+
+    <ul class='shipin'>
+        <p class='active'>视频一</p>
+        <p>视频二</p>
+        <p>视频三</p>
+        <p>视频四</p>
+    </ul>
+</div>
+<!-- 视频 -->
+   
+</div>
+
+
+<!-- 无缝滚动 -->
+
+
+		<div class="btns_con">
+			<div class="left" id="btn01">&lt;</div>
+			<div class="right" id="btn02">&gt;</div>
+		</div>
+		<div class="list_con" id="slide">
+			<ul>
+			<li><a href=""><img src="/static/images/xiaoyueyue/1.jpg" height="284" width="163.5" alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/2.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/3.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/4.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/5.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/6.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/7.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/8.jpg" height="284" width="163.5"alt="我和他"></a></li>
+			<li><a href=""><img src="/static/images/xiaoyueyue/9.jpg" height="284" width="163.5"alt="我和他"></a></li>
+
+			</ul>		
+		</div>
+<!-- 无缝滚动 -->
+
+
+
+<!-- 底部 -->
+    <div class="container" id="page">
+        <div style="text-align: center; margin: 100px 0 10px">
+            &copy; 2018-永远... Copyright 小月月--黑ICP备1314520号 <a href="#" target="_blank" style="text-decoration: underline;color: #fff"></span></a>
+        </div>
+        <!-- footer -->
+    </div>
+<!-- 底部 -->
+
+
+
+
+</div>
+
+</body>
+</html>

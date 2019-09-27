@@ -1,0 +1,11 @@
+input{
+	width:40px;
+	height:10px;
+	background-color:gold;
+	border:0;
+}
+.mybody{
+	position: relative; 
+	background: #34b9fe url(images/bg31.jpg) no-repeat top;
+    background-attachment: fixed
+}

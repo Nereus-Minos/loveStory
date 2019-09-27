@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>送上祝福</title>
+    <script type="text/javascript" src="/static/Js/jquery-1.12.4.min.js"></script>
+    <script src="/static/Js/jquery-1.4.1.js" type="text/javascript"></script>
+    <script src="/static/Js/snowfall.jquery.js" type="text/javascript"></script>
+    <script src="/static/lib/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="/static/lib/bootstrap-3.3.7.css">
+
+	<script type="text/javascript">
+	    var lid;
+		$(document).ready(function(){
+			{% for name, message, lastid in comments %}
+			    var content = "<div class='pingluntiao' style='width:600px; padding:5px;border:2px solid lightblue;position:relative;margin-top:-30px;margin-left:auto;margin-right:auto;background-color:#fff;color:#333;line-height: 25px;border-radius:10px;margin-bottom: 30px;'><div style='color:#333;float:left;font-weight:bold;'>评论人： </div><div style='color:#4D4D4D;'>{{ name }}</div><div style='color:#333;float:left;font-weight:bold;'>评论内容：</div> <div style='color:#4D4D4D;'>{{  message }}</div></div>";
+				$(".list-group").after(content);
+				lid = {{ lastid }};
+			{% endfor %}
+
+		});
+
+
+    window.onload = function(){
+         $(function () {
+            // 定时器
+            var t1=window.setInterval(refreshCount, 500);
+
+            function refreshCount() {
+                    // 通过轮询的方法查看有没有新消息
+                 $.ajax({
+                     type: "GET",
+                     url: "/Comments/",
+                     data: {ltime: lid},
+                     dataType: "json",
+                     success: function(data){
+<!--                         console.log(data.comments);-->
+                        for(var i=0; i < (data.comments).length; i++){
+
+                                var content = "<div class='pingluntiao' style='width:600px; padding:5px;border:2px solid lightblue;position:relative;margin-top:-30px;margin-left:auto;margin-right:auto;background-color:#fff;color:#333;font-weight:bold;line-height: 25px;border-radius:10px;margin-bottom: 30px;'><div style='color:#333;float:left;font-weight:bold;'>评论人：</div><div style='color:#4D4D4D;'>" + (data.comments)[i][0] + "</div></br><div style='color:#333;float:left;font-weight:bold;'>评论内容：</div><div style='color:#4D4D4D;'> " + (data.comments)[i][1] + "</div></div>";
+                                $(".list-group").after(content);
+
+                                lid = (data.comments)[i][2];
+                        }
+                     },
+
+                 });
+            }
+
+         });
+
+    };
+</script>
+
+
+</head>
+
+
+
+<body id="mybody" style="position: relative; 
+  background: #34b9fe url(/static/images/bg31.jpg) no-repeat top;
+    background-attachment: fixed;">
+
+
+<!-- 左上角箭头 -->
+    <a href="/">
+        <img src="/static/images/return.png" width="50px" height="50px" /></a>
+<!-- 左上角箭头 -->
+
+
+<div style="margin: 0 auto; width: 600px; margin-top: 100px;">
+  <div style="background: url(/static/images/bgcomment.jpg) no-repeat top; width: 600px; height: 400px;">
+
+  <div id="app">
+
+
+    <cmt-box @func="loadComments"></cmt-box>
+
+
+    <ul class="list-group">
+      <br />
+      <br />
+      <li class="list-group-item" style="border: 1px solid #000;border-radius: 10px;" v-for="item in list" :key="item.id">
+        <span class="badge" style='background-color: #82a6f5;'>姓名： {{ item.user }}</span>
+        {{ item.content }}
+        <br />
+
+      </li>
+    </ul>
+
+
+
+
+
+  </div>
+
+
+  <template id="tmpl">
+    <div style="padding: 150px 0 0 0px; margin-top: 200px;margin-left:100px;">
+
+      <div class="form-group">
+        <label>姓名：</label>
+        <input id="chat-name-input" type="text" class="form-control" style="width: 150px; border: 1px solid #FB549C;" v-model="user">
+      </div>
+
+      <div class="form-group">
+        <label>评论内容：</label>
+        <textarea id="chat-message-input" class="form-control" style="width: 250px; height:90px; border: 1px solid #FB549C;" v-model="content"></textarea>
+      </div>
+
+      <div class="form-group">
+        <input  id="chat-message-submit" type="button" value="发表评论" class="btn btn-primary" @click="postComment">
+      </div>
+    </div>
+  </template>
+  </div>
+</div>
+
+
+
+  <script>
+
+    var commentBox = {
+      data() {
+        return {
+          user: '',
+          content: ''
+        }
+      },
+      template: '#tmpl',
+      methods: {
+        postComment() { // 发表评论的方法
+
+        if($("#chat-name-input").val() ==''){
+            alert('名字不能为空');
+        }else {
+           $(".content").append();
+           $.ajax({
+                type: "GET",
+                url: "/Comments/",
+                data: {name: $("#chat-name-input").val(), send_message:$("#chat-message-input").val()},
+                dataType: "json",
+                success: function(data){
+                    //清空输入框
+                    $("#chat-message-input").val('');
+                    $("#chat-name-input").val('');
+                },
+           });
+        }
+        }
+      }
+    }
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          { id: Date.now(), user: '李白', content: '天生我材必有用' },
+          { id: Date.now(), user: '江小白', content: '劝君更尽一杯酒' },
+          { id: Date.now(), user: '小马', content: '我姓马， 风吹草低见牛羊的马' }
+        ]
+      },
+      beforeCreate(){ // 注意：这里不能调用 loadComments 方法，因为在执行这个钩子函数的时候，data 和 methods 都还没有被初始化好
+
+      },
+      created(){
+        this.loadComments()
+      },
+
+      methods: {
+        loadComments() { // 从本地的 localStorage 中，加载评论列表
+          var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+          this.list = list
+        }
+      },
+      components: {
+        'cmt-box': commentBox
+      }
+    });
+  </script>
+
+
+
+</body> 
+
+<script type="text/javascript">
+    $(document).snowfall('clear');
+    $(document).snowfall({
+        image: "/static/images/huaban.png",
+        flakeCount: 30,
+        minSize: 5,
+        maxSize: 22
+    });
+</script>
+</html>

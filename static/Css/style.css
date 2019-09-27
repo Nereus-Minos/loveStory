@@ -1,0 +1,28 @@
+
+/*basic reset*/
+* {margin: 0; padding: 0;}
+body {
+	text-align: center; 
+	overflow: hidden;
+	background-color :lightblue;
+}
+
+.grid {
+	/*width: 600px; height: 300px;*/
+	 margin:9.4px 157px 0px ;
+	perspective: 500px; /*For 3d*/
+}
+.grid img {width: 165px; height: 220px; display: block; float: left;}
+
+
+
+.thumbnail{
+	width:171px;
+	height:226px;
+	float :left;
+	padding: 2px;
+	margin-bottom: 9.4px;
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img{
+	height:220px;
+}

@@ -1,0 +1,64 @@
+	/*容器高度*/
+
+		.scroll_con{
+			background-color: #82a6f5;
+			width:309px;
+			height:580px;
+			border:3px solid #f6d6ff;
+			margin:-580px 200px 0 auto;
+			position:relative;
+			overflow:hidden;
+			border-radius: 10px;
+		}
+/*文本实际高度*/
+		.paragraph{
+			width:360px;
+			position:absolute;
+			left:0;
+			top:0;
+			padding:10px 20px;
+			font-size:14px;
+			font-family:'Microsoft Yahei';
+			line-height:32px;
+			text-indent:2em;
+		}
+/*滑动条的容器*/
+		.scroll_bar_con{
+			width:10px;
+			height:490px;
+			position:absolute;
+			right:5px;
+			top:5px;
+		}
+/*实际滑动条*/
+		.scroll_bar{
+			width:10px;
+			height:200px;
+			background-color:#ccc;
+			position:absolute;
+			left:0;
+			top:0;
+			cursor:pointer;
+			border-radius:5px;
+
+		}
+
+.paragraph h1{
+	font-size: 21px;
+}
+.paragraph h4{
+	font-size: 16px;
+}
+.paragraph 	h4{
+	color:#f6d6ff;
+}
+.paragraph 	h1{
+	color:yellow;
+}	
+
+.paragraph 	h4:hover{
+			color:cyan;
+}
+.paragraph 	h1:hover{
+			color:cyan;
+}

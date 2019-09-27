@@ -1,0 +1,102 @@
+		*{
+			margin:0;padding:0;
+		}
+		body{
+			font-size:12px;
+		}
+		#accordion{
+			width:514.25px; 
+			height:580px; 
+			margin:26px auto 0 auto; 
+			position:relative; 
+			overflow:hidden; 
+			border:3px solid #CCC;
+			border-radius: 10px;
+		}
+		#accordion ul{
+			list-style:none;
+		}
+		#accordion ul li{
+			width:325.25px;
+			height:580px; 
+			position:absolute; 
+			background:#FFF;
+		}
+
+
+		#accordion ul li span{
+			display:block;
+			width:21px; height:580px; 
+			float:left; 
+			text-align:center; 
+			color:#FFF; 
+			padding-top:5px; 
+			cursor:pointer;
+		}
+
+
+		#accordion ul li img{
+			display:block; 
+			float:right;
+			height:580px; 			
+		}
+		.bar01{
+			left:0px;
+		}
+		.bar02{
+			left:325.25px;
+		}
+		.bar03{
+			left:346.25px;
+		}
+		.bar04{
+			left:367.25px;
+		}
+		.bar05{
+			left:388.25px;
+		}
+		.bar06{
+			left:409.25px;
+		}
+		.bar07{
+			left:430.25px;
+		}
+		.bar08{
+			left:451.25px;
+		}
+		.bar09{
+			left:472.25px;
+		}
+		.bar10{
+			left:493.25px;
+		}
+		.bar01 span{
+			background:#f3f0e6;
+		}
+		.bar04 span{
+			background:#f6d6ff;
+		}
+		.bar03 span{
+			background:#efcee8;
+		}
+		.bar02 span{
+			background:#e8d1e7;
+		}
+		.bar06 span{
+			background:#c7b3e5;
+		}
+		.bar07 span{
+			background:#b49cf0;
+		}
+		.bar08 span{
+			background:#7774b7;
+		}
+		.bar09 span{
+			background:#8977b3;
+		}
+		.bar05 span{
+			background:#e8d1e7;
+		}
+		.bar10 span{
+			background:#733c80;
+		}
